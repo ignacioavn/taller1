@@ -21,6 +21,7 @@ Route::post('login',[AuthController::class,'login']);
 Route::middleware(['jwt'])->group(function () {
     Route::post('/logout',[AuthController::class,'logout']);
     Route::get('/admin/users',[UserController::class,'index']);
+    Route::post('/admin/users',[UserController::class,'store']);
 });
 
 
