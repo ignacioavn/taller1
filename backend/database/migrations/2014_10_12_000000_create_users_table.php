@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('rut')->unique();
             $table->string('email')->unique();
-            $table->string('username')->nullable();
-            $table->string('password')->nullable();
             $table->integer('points');
             $table->string('role')->default('user');
         });
