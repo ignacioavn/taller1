@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
         User::create([
             'name' => 'Ignacio',
             'lastname' => 'Avendaño',
-            'rut' => '20.545.216-8',
+            'rut' => '20.545.217-8',
             'email' => 'ignacio.avendano@alumnos.ucn.cl',
             'points' => 1000,
         ]);
