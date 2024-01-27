@@ -15,9 +15,7 @@ class UserController extends Controller
             if ($users->isEmpty()) {
                 return response()->json(['message' => 'No hay usuarios disponibles.'], 200);
             }
-            return response()->json([
-                'users' => $users,
-                'success'=> 'Se han obtenido todos los usuarios.'], 200);
+            return response()->json(['users' => $users], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al obtener los usuarios.'], 500);
         }
@@ -57,5 +55,66 @@ class UserController extends Controller
             } catch (\Exception $e) {
                 return response()->json(['error' => 'Error al crear usuario.' . $e->getMessage()], 500);
             }
+    }
+
+    public function edit($id)
+    {
+        try {
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json(['error' => 'Usuario no encontrado.'], 404);
+            }
+
+            $user->makeHidden(['id','role','rut']);
+
+            return response()->json([
+                'user' => $user,
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al buscar el usuario para editar.' . $e->getMessage()], 500);
+        }
+    }
+
+    public function update (Request $request, $id)
+    {
+        try {
+            $messages = validationMessages();
+
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'lastname' => 'required|string|max:255',
+                'email' => 'required|string|unique:users|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/',
+                'points' => 'required|integer|min:0',
+            ], $messages);
+
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json(['error' => 'Usuario no encontrado.'], 404);
+            }
+
+            $user->update([
+                'name' => $request->input('name'),
+                'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
+                'points' => $request->input('points'),
+            ]);
+
+            $user->makeHidden(['id','role','rut']);
+
+            return response()->json([
+                'success' => 'Usuario actualizado correctamente.',
+                'user' => $user
+            ], 200);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors = $e->errors();
+            return response()->json(['errors' => $errors], 422);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al actualizar el usuario.' . $e->getMessage()], 500);
+        }
     }
 }

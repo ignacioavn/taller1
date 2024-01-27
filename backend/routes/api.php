@@ -22,6 +22,8 @@ Route::middleware(['jwt'])->group(function () {
     Route::post('/logout',[AuthController::class,'logout']);
     Route::get('/admin/users',[UserController::class,'index']);
     Route::post('/admin/users',[UserController::class,'store']);
+    Route::get('/admin/users/edit/{id}',[UserController::class,'edit']);
+    Route::put('/admin/users/{id}',[UserController::class,'update']);
 });
 
 
