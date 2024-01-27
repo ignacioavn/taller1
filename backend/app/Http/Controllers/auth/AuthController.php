@@ -47,4 +47,19 @@ class AuthController extends Controller
             'rut' => $rut,
         ], 200);
     }
+
+    public function logout()
+    {
+        try {
+            JWTAuth::invalidate(JWTAuth::getToken());
+
+            return response()->json([
+                'success' => 'Cierre de sesión exitoso.',
+            ], 200);
+        } catch (JWTException $e) {
+            return response()->json([
+                'error' => 'No se pudo cerrar sesión.',
+            ], 500);
+        }
+    }
 }
