@@ -1,6 +1,6 @@
 .outer {
   height: 100vh;
-  background: linear-gradient(to top, #a3ffa3 50%, #4aff4a 90%) no-repeat; /* Bright green gradient */
+  background: linear-gradient(to top, #a3ffa3 50%, #4aff4a 90%) no-repeat;
 }
 
 .panel-heading {
@@ -17,8 +17,8 @@
 .btn {
   margin-top: 20px;
   border-radius: 15px;
-  background-color: #4aff4a; /* Bright green background for buttons */
-  color: #fff; /* White text for buttons */
+  background-color: #4aff4a;
+  color: #fff;
 }
 
 .panel {
