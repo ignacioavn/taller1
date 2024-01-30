@@ -1,6 +1,7 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -23,12 +24,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe(
+      this.authService.login(this.loginForm.value).subscribe(
         response => {
-          console.log('Login exitoso', response);
+          console.log(response);
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/dashboard']);
         },
         error => {
-          console.error('Error en el inicio de sesión', error);
+          console.error('Error en el inicio de sesión.', error);
         }
       );
     }
