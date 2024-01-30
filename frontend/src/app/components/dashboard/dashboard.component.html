@@ -1,8 +1,12 @@
-<mat-toolbar style="background-color: #00FF00; height: 60px;">
-  <img src="assets/images/dumbo-logo.png" alt="Logo" style="height: 50px; margin-right: 16px;">
-  <span style="color:white">Dumbo</span>
+<mat-toolbar style="background-color: #00FF00; height: 70px;">
+  <a routerLink="/" style="text-decoration: none; color: white;">
+    <img src="assets/images/dumbo-logo.png" alt="Logo" style="height: 50px; margin-right: 16px;">
+    <span style="color: white; text-decoration: none;">Dumbo</span>
+  </a>
   <span class="example-spacer"></span>
-  <button mat-raised-button>
-    Crear usuario
+  <button mat-raised-button (click)="logout()">
+    Cerrar sesión
   </button>
 </mat-toolbar>
+
+<app-user-list></app-user-list>
