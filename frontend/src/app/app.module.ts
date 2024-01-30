@@ -16,6 +16,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     DashboardComponent,
     UserListComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSortModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

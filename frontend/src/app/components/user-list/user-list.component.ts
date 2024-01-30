@@ -3,6 +3,8 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateUserComponent } from '../create-user/create-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +19,9 @@ export class UserListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -35,5 +39,9 @@ export class UserListComponent implements OnInit {
         console.error('Error obteniendo usuarios.', error);
       }
     );
+  }
+
+  openCreateUser(){
+    this.dialog.open(CreateUserComponent);
   }
 }

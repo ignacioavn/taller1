@@ -23,4 +23,15 @@ export class UserService {
       return new Observable();
     }
   }
+
+  createUser(createUserForm: any): Observable<any> {
+    const token = this.authService.getToken();
+    if (token) {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+      return this.http.post<any>(`${this.url}/users/new`, createUserForm , { headers });
+    } else {
+      console.log('Token no encontrado');
+      return new Observable();
+    }
+  }
 }
