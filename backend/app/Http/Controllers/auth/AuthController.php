@@ -42,7 +42,7 @@ class AuthController extends Controller
         $rut = $admin->rut;
 
         return response()->json([
-            'message' => 'Inicio de sesión exitoso.',
+            'success' => 'Inicio de sesión exitoso.',
             'token' => $token,
             'rut' => $rut,
         ], 200);
