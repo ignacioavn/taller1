@@ -1,3 +1,23 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.custom-toolbar {
+  background-color: #00FF00;
+  height: 70px;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: white;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 16px;
+}
+
+.logo-text {
+  color: white;
+  text-decoration: none;
+}

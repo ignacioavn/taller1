@@ -1,10 +1,10 @@
-<mat-toolbar style="background-color: #00FF00; height: 70px;">
-  <a routerLink="/" style="text-decoration: none; color: white;">
-    <img src="assets/images/dumbo-logo.png" alt="Logo" style="height: 50px; margin-right: 16px;">
-    <span style="color: white; text-decoration: none;">Dumbo</span>
+<mat-toolbar class="custom-toolbar">
+  <a routerLink="/" class="logo-link">
+    <img src="assets/images/dumbo-logo.png" alt="Logo" class="logo">
+    <span class="logo-text">Dumbo</span>
   </a>
   <span class="example-spacer"></span>
-  <button mat-raised-button style="background-color: #ffffff; color: #00FF00;" (click)="logout()">
+  <button mat-raised-button color="warn" (click)="logout()" class="logout-button">
     Cerrar sesión
   </button>
 </mat-toolbar>
