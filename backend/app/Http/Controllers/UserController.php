@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         try {
-            $users = User::all()->makeHidden(['id','role']);
+            $users = User::all()->makeHidden(['role']);
 
             if ($users->isEmpty()) {
                 return response()->json(['message' => 'No hay usuarios disponibles.'], 200);
