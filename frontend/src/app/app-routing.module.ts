@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [tokenGuard] },
   { path: 'users', component: UserListComponent, canActivate: [tokenGuard] },
-  { path: 'new', component: CreateUserComponent, canActivate: [tokenGuard]}
+  { path: 'new', component: CreateUserComponent, canActivate: [tokenGuard]},
 ];
 
 @NgModule({
