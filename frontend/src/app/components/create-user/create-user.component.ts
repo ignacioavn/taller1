@@ -31,14 +31,15 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createUser(){
+  createUser(): void{
     if (this.createUserForm.valid){
-      this.userService.createUser(this.createUserForm.value).subscribe(
-        response => {
+      const newUser = this.createUserForm.value;
+      this.userService.createUser(newUser).subscribe(
+        (response) => {
           console.log(response);
           this.dialogRef.close();
         },
-        error => {
+        (error) => {
           console.error('Error al crear usuario.', error);
         }
       );

@@ -24,11 +24,11 @@ export class UserService {
     }
   }
 
-  createUser(createUserForm: any): Observable<any> {
+  createUser(user : User): Observable<User> {
     const token = this.authService.getToken();
     if (token) {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
-      return this.http.post<any>(`${this.url}/users/new`, createUserForm , { headers });
+      return this.http.post<User>(`${this.url}/users/new`, user , { headers });
     } else {
       console.log('Token no encontrado');
       return new Observable();
