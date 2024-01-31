@@ -1,5 +1,7 @@
 # Taller 1
 
+![Logo](https://i.imgur.com/utXCYvq.png)
+
 "This project focuses on the development of a user management system through a RESTful API, enabling CRUD operations for users within a company named Dumbo. Laravel is used for the backend, while Angular is employed for the frontend."
 
 
