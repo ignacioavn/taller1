@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { UserListComponent } from '../user-list/user-list.component';
@@ -9,7 +9,7 @@ import { UserListComponent } from '../user-list/user-list.component';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent {
 
   createUserForm: FormGroup;
 
@@ -29,9 +29,6 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
   createUser(): void {
     if (this.createUserForm.valid) {
       const newUser = this.createUserForm.value;
@@ -39,6 +36,7 @@ export class CreateUserComponent implements OnInit {
         (response) => {
           console.log(response);
           this.data.userListComponent.getUsers();
+          this.createUserForm.reset();
           this.dialogRef.close();
         },
         (error) => {
