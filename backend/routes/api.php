@@ -25,8 +25,6 @@ Route::middleware(['jwt'])->group(function () {
     Route::get('/users/{id}/edit',[UserController::class,'edit']);
     Route::put('/users/{id}/edit',[UserController::class,'update']);
     Route::delete('/users/{id}',[UserController::class,'destroy']);
-    Route::get('/users/search/rut/{rut}',[UserController::class,'searchRut']);
-    Route::get('/users/search/email/{email}',[UserController::class,'searchEmail']);
 });
 
 

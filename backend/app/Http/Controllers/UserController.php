@@ -134,43 +134,4 @@ class UserController extends Controller
             return response()->json(['error' => 'Error al eliminar el usuario.' . $e->getMessage()], 500);
         }
     }
-
-    public function searchRut($rut)
-    {
-        try {
-            $user = User::where('rut', $rut)->first();
-
-            if (!$user) {
-                return response()->json(['error' => 'Usuario no encontrado.'], 404);
-            }
-
-            $user->makeHidden(['id', 'role']);
-
-            return response()->json([
-                'user' => $user,
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al buscar el usuario por RUT.' . $e->getMessage()], 500);
-        }
-    }
-
-    public function searchEmail($email)
-    {
-        try {
-            $user = User::where('email', $email)->first();
-
-            if (!$user) {
-                return response()->json(['error' => 'Usuario no encontrado.'], 404);
-            }
-
-
-            $user->makeHidden(['id', 'role']);
-
-            return response()->json([
-                'user' => $user,
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al buscar el usuario por correo electrónico.' . $e->getMessage()], 500);
-        }
-    }
 }
