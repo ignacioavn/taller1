@@ -17,8 +17,7 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<CreateUserComponent>,
-    private router: Router) {
+    private dialogRef: MatDialogRef<CreateUserComponent>) {
 
     this.createUserForm = this.fb.group({
       rut: ['', [Validators.required]],
