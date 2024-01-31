@@ -51,11 +51,9 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  openCreateUser(){
-    this.dialog.open(CreateUserComponent);
+  openCreateUser() {
+    const dialogRef = this.dialog.open(CreateUserComponent, {
+      data: { userListComponent: this },
+    });
   }
-
-
-
-
 }
