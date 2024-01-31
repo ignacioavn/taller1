@@ -52,6 +52,28 @@ export class UserListComponent implements OnInit {
     );
   }
 
+  rutFilter(rutInputValue: string) {
+    if (rutInputValue.trim() === '') {
+      this.userDataSource.data = this.users;
+    } else {
+      const filteredUsers = this.users.filter(user =>
+        user.rut.includes(rutInputValue)
+      );
+      this.userDataSource.data = filteredUsers;
+    }
+  }
+
+  emailFilter(emailInputValue: string) {
+    if (emailInputValue.trim() === '') {
+      this.userDataSource.data = this.users;
+    } else {
+      const filteredUsers = this.users.filter(user =>
+        user.email.includes(emailInputValue)
+      );
+      this.userDataSource.data = filteredUsers;
+    }
+  }
+
   openCreateUser() {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       data: { userListComponent: this },

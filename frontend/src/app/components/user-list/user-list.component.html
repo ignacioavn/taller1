@@ -5,11 +5,11 @@
     </button>
     <mat-form-field>
       <mat-label>Filtrar por RUT</mat-label>
-      <input matInput placeholder="Filtrar por RUT" #input>
+      <input matInput placeholder="Filtrar por RUT" #rutInput (input)="rutFilter(rutInput.value)">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Filtrar por Email</mat-label>
-      <input matInput placeholder="Filtrar por Email" #input>
+      <input matInput placeholder="Filtrar por Email" #emailInput (input)="emailFilter(emailInput.value)">
     </mat-form-field>
   </div>
   <table mat-table [dataSource]="userDataSource" class="mat-elevation-z8 demo-table">
