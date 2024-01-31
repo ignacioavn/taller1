@@ -14,7 +14,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
-  displayedColumns: string[] = ['rut', 'name', 'lastname', 'email', 'points'];
+  displayedColumns: string[] = ['rut', 'name', 'lastname', 'email', 'points', 'actions'];
   userDataSource = new MatTableDataSource<User>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -33,7 +33,6 @@ export class UserListComponent implements OnInit {
         this.users = data.users;
         this.userDataSource.data = this.users;
         this.userDataSource.paginator = this.paginator;
-        console.log(data);
       },
       (error) => {
         console.error('Error obteniendo usuarios.', error);
@@ -41,7 +40,22 @@ export class UserListComponent implements OnInit {
     );
   }
 
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(
+      (data) => {
+        this.getUsers();
+      },
+      (error) => {
+        console.error('Error al eliminar usuario.', error);
+      }
+    );
+  }
+
   openCreateUser(){
     this.dialog.open(CreateUserComponent);
   }
+
+
+
+
 }

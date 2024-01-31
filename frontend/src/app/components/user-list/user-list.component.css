@@ -22,3 +22,18 @@
 .filter-container mat-form-field {
   margin-right: 16px;
 }
+
+.button-yellow {
+  background-color: #ffaa00;
+  color: white;
+}
+
+.button-red {
+  background-color: #ff0000;
+  color: white;
+}
+
+.button-spacing {
+  margin-left: 10px;
+  display: inline-block;
+}

@@ -34,4 +34,15 @@ export class UserService {
       return new Observable();
     }
   }
+
+  deleteUser(id: number): Observable<void> {
+    const token = this.authService.getToken();
+    if (token) {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+      return this.http.delete<void>(`${this.url}/users/${id}`, { headers });
+    } else {
+      console.log('Token no encontrado');
+      return new Observable();
+    }
+  }
 }
