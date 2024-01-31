@@ -66,7 +66,7 @@ class UserController extends Controller
                 return response()->json(['error' => 'Usuario no encontrado.'], 404);
             }
 
-            $user->makeHidden(['id','role','rut']);
+            $user->makeHidden(['role','rut']);
 
             return response()->json([
                 'user' => $user,
@@ -102,7 +102,7 @@ class UserController extends Controller
                 'points' => $request->input('points'),
             ]);
 
-            $user->makeHidden(['id','role','rut']);
+            $user->makeHidden(['role','rut']);
 
             return response()->json([
                 'success' => 'Usuario actualizado correctamente.',
