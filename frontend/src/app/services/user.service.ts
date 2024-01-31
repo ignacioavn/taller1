@@ -19,7 +19,7 @@ export class UserService {
       const headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
       return this.http.get<User[]>(`${this.url}/users`, { headers });
     } else {
-      console.log('Token no encontrado');
+      console.log('Token no encontrado.');
       return new Observable();
     }
   }
@@ -30,7 +30,29 @@ export class UserService {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
       return this.http.post<User>(`${this.url}/users/new`, user , { headers });
     } else {
-      console.log('Token no encontrado');
+      console.log('Token no encontrado.');
+      return new Observable();
+    }
+  }
+
+  editUser(id: number): Observable<{ user: User }> {
+    const token = this.authService.getToken();
+    if (token) {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+      return this.http.get<{ user: User }>(`${this.url}/users/${id}/edit`, { headers });
+    } else {
+      console.log('Token no encontrado.');
+      return new Observable();
+    }
+  }
+
+  updateUser(id: number, user: User): Observable<User> {
+    const token = this.authService.getToken();
+    if (token) {
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+      return this.http.put<User>(`${this.url}/users/${id}/edit`, user, { headers });
+    } else {
+      console.log('Token no encontrado.');
       return new Observable();
     }
   }
@@ -41,7 +63,7 @@ export class UserService {
       const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
       return this.http.delete<void>(`${this.url}/users/${id}`, { headers });
     } else {
-      console.log('Token no encontrado');
+      console.log('Token no encontrado.');
       return new Observable();
     }
   }

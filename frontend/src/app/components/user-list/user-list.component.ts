@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -54,6 +55,12 @@ export class UserListComponent implements OnInit {
   openCreateUser() {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       data: { userListComponent: this },
+    });
+  }
+
+  openUpdateUser(id: number) {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      data: { userListComponent: this, id: id },
     });
   }
 }

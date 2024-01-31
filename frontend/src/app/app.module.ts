@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { MatDialogModule} from '@angular/material/dialog';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogModule} from '@angular/material/dialog';
     DashboardComponent,
     UserListComponent,
     CreateUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
